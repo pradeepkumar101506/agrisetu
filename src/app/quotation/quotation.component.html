@@ -1,0 +1,131 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Quotation Request</h5>
+
+      <form [formGroup]="quoteForm" (ngSubmit)="onSubmit()" novalidate>
+        <div class="mb-3">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-control" formControlName="userName" />
+          <div
+            *ngIf="submitted && f['userName']?.invalid"
+            class="text-danger small"
+          >
+            <div *ngIf="f['userName'].errors?.['required']">
+              Name is required.
+            </div>
+            <div *ngIf="f['userName'].errors?.['maxLength']">
+              Name is too long.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" formControlName="email" />
+          <div
+            *ngIf="submitted && f['email'].invalid"
+            class="text-danger small"
+          >
+            <div *ngIf="f['email'].errors?.['required']">
+              Email is required.
+            </div>
+            <div *ngIf="f['email'].errors?.['email']">Enter a valid email.</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Contact Number</label>
+          <input
+            type="tel"
+            class="form-control"
+            formControlName="contactNumber"
+          />
+          <div
+            *ngIf="submitted && f['contactNumber'].invalid"
+            class="text-danger small"
+          >
+            <div *ngIf="f['contactNumber'].errors?.['required']">
+              Contact number is required.
+            </div>
+            <div *ngIf="f['contactNumber'].errors?.['pattern']">
+              Enter a valid phone number.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Address</label>
+          <textarea
+            class="form-control"
+            rows="2"
+            formControlName="address"
+          ></textarea>
+          <div
+            *ngIf="submitted && f['address'].invalid"
+            class="text-danger small"
+          >
+            <div *ngIf="f['address'].errors?.['required']">
+              Address is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-8 mb-3">
+            <label class="form-label">Product Name</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="productName"
+            />
+            <div
+              *ngIf="submitted && f['productName'].invalid"
+              class="text-danger small"
+            >
+              <div *ngIf="f['productName'].errors?.['required']">
+                Product name is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Quantity</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="quantity"
+            />
+            <div
+              *ngIf="submitted && f['quantity'].invalid"
+              class="text-danger small"
+            >
+              <div *ngIf="f['quantity'].errors?.['required']">
+                Quantity is required.
+              </div>
+              <div *ngIf="f['quantity'].errors?.['min']">
+                Quantity must be at least 1.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Message (optional)</label>
+          <textarea
+            class="form-control"
+            rows="3"
+            formControlName="message"
+          ></textarea>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Request Quotation</button>
+      </form>
+
+      <div *ngIf="submittedData" class="alert alert-success mt-3">
+        <strong>Request submitted.</strong>
+        <pre class="small">{{ submittedData | json }}</pre>
+      </div>
+    </div>
+  </div>
+</div>
