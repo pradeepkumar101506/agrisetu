@@ -6,6 +6,7 @@ import {
   Validators,
   FormGroup,
 } from '@angular/forms';
+import { QuotationService } from './services/quotation.service';
 
 @Component({
   selector: 'app-quotation',
@@ -13,12 +14,16 @@ import {
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './quotation.component.html',
   styleUrls: ['./quotation.component.css'],
+  providers: [QuotationService],
 })
 export class QuotationComponent {
   quoteForm!: FormGroup;
   submitted = false;
   submittedData: any = null;
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private quotationService: QuotationService,
+  ) {
     this.quoteForm = this.formBuilder.group({
       userName: ['', [Validators.required, Validators.maxLength(50)]],
       email: ['', [Validators.required, Validators.email]],
@@ -44,5 +49,15 @@ export class QuotationComponent {
     }
     this.submittedData = this.quoteForm.value;
     console.log('Form Submitted', this.submittedData);
+    this.quotationService.createQuotation(this.submittedData).subscribe(
+      (response) => {
+        console.log('Quotation request submitted successfully', response);
+        this.quoteForm.reset();
+        this.submitted = false;
+      },
+      (error) => {
+        console.error('Error submitting quotation request', error);
+      },
+    );
   }
 }
