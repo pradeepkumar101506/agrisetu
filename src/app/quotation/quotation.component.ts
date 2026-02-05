@@ -7,6 +7,7 @@ import {
   FormGroup,
 } from '@angular/forms';
 import { QuotationService } from './services/quotation.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quotation',
@@ -23,6 +24,7 @@ export class QuotationComponent {
   constructor(
     private formBuilder: FormBuilder,
     private quotationService: QuotationService,
+    private router: Router,
   ) {
     this.quoteForm = this.formBuilder.group({
       userName: ['', [Validators.required, Validators.maxLength(50)]],
@@ -54,6 +56,7 @@ export class QuotationComponent {
         console.log('Quotation request submitted successfully', response);
         this.quoteForm.reset();
         this.submitted = false;
+        this.router.navigate(['/thank-you']);
       },
       (error) => {
         console.error('Error submitting quotation request', error);

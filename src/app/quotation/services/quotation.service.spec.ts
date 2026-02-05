@@ -4,11 +4,12 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { QuotationService, QuotationRequest } from './quotation.service';
+import { environment } from '../../../environments/environment';
 
 describe('QuotationService', () => {
   let service: QuotationService;
   let httpMock: HttpTestingController;
-  const apiUrl = '/api/quotations';
+  const apiUrl = `${environment.apiBaseUrl}/quotations`;
 
   const mockQuotation: QuotationRequest = {
     id: '1',

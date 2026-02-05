@@ -4,6 +4,8 @@
     align-items: center;
     min-height: 100vh;
     padding: 20px;
+    overflow: auto;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 
 .container {
@@ -14,6 +16,42 @@
 }
 
 .card {
-    max-width: 500px;
+    max-width: 640px;
     width: 100%;
+    background: linear-gradient(135deg, #fafbfc 0%, #f0f4f8 100%);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(59, 130, 246, 0.1);
+    border-radius: 12px;
+    border: 1px solid rgba(59, 130, 246, 0.15);
+}
+
+.card-body {
+    padding: 32px;
+}
+
+.card-title {
+    color: #1a3a52;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 10px 24px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
 }

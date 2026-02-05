@@ -1,0 +1,23 @@
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: none;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.card-title {
+  color: #28a745;
+  font-weight: 600;
+}
+
+.card-text {
+  color: #666;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.btn-primary {
+  margin-top: 20px;
+  padding: 10px 30px;
+  font-size: 16px;
+}
